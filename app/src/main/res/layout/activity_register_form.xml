@@ -12,33 +12,39 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name" />
+            android:hint="Name"
+            android:id="@+id/register_form_name"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Address" />
+            android:hint="Address"
+            android:id="@+id/register_form_address"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number" />
+            android:hint="Phone Number"
+            android:id="@+id/register_form_phone"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Site" />
+            android:hint="Site"
+            android:id="@+id/register_form_site"/>
 
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:max="10"
-            android:numStars="5" />
+            android:numStars="5"
+            android:id="@+id/register_form_rating"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            android:text="Save"
+            android:id="@+id/register_form_save"/>
     </LinearLayout>
 </ScrollView>
