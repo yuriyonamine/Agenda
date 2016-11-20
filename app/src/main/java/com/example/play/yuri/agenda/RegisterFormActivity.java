@@ -4,8 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 public class RegisterFormActivity extends AppCompatActivity {
@@ -26,7 +24,9 @@ public class RegisterFormActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.form_menu_ok:
-                Toast.makeText(RegisterFormActivity.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
+                RegisterStudentFormHelper registerStudentFormHelper = new RegisterStudentFormHelper(this);
+                Student student = registerStudentFormHelper.getStudent();
+                Toast.makeText(RegisterFormActivity.this, "Student " + student.getName() + " registered.", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }
