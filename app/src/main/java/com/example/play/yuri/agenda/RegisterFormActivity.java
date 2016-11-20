@@ -27,12 +27,12 @@ public class RegisterFormActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.form_menu_ok:
-                StudentDAO dao = new StudentDAO(this);
+                StudentDAO studentDAO = new StudentDAO(this);
                 RegisterStudentFormHelper registerStudentFormHelper = new RegisterStudentFormHelper(this);
                 Student student = registerStudentFormHelper.getStudent();
 
-                dao.save(student);
-                dao.close();
+                studentDAO.save(student);
+                studentDAO.close();
 
                 Toast.makeText(RegisterFormActivity.this, "Student " + student.getName() + " registered.", Toast.LENGTH_SHORT).show();
                 finish();

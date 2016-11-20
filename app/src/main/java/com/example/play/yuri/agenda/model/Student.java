@@ -4,6 +4,7 @@ package com.example.play.yuri.agenda.model;
  * Created by Play on 20/11/2016.
  */
 public class Student {
+    private int id;
     private String name;
     private String address;
     private String phone;
@@ -48,5 +49,18 @@ public class Student {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return id + " " + name;
     }
 }
