@@ -3,6 +3,8 @@ package com.example.play.yuri.agenda;
 import android.widget.EditText;
 import android.widget.RatingBar;
 
+import com.example.play.yuri.agenda.model.Student;
+
 /**
  * Created by Play on 19/11/2016.
  */

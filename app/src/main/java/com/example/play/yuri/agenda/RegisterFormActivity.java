@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.play.yuri.agenda.dao.StudentDAO;
+import com.example.play.yuri.agenda.model.Student;
+
 public class RegisterFormActivity extends AppCompatActivity {
 
     @Override
@@ -24,8 +27,13 @@ public class RegisterFormActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.form_menu_ok:
+                StudentDAO dao = new StudentDAO(this);
                 RegisterStudentFormHelper registerStudentFormHelper = new RegisterStudentFormHelper(this);
                 Student student = registerStudentFormHelper.getStudent();
+
+                dao.save(student);
+                dao.close();
+
                 Toast.makeText(RegisterFormActivity.this, "Student " + student.getName() + " registered.", Toast.LENGTH_SHORT).show();
                 finish();
                 break;

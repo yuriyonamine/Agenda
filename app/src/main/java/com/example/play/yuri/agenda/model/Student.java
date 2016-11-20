@@ -1,4 +1,4 @@
-package com.example.play.yuri.agenda;
+package com.example.play.yuri.agenda.model;
 
 /**
  * Created by Play on 20/11/2016.
