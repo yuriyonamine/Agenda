@@ -10,41 +10,35 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/register_form_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
-            android:id="@+id/register_form_name"/>
+            android:hint="Name" />
 
         <EditText
+            android:id="@+id/register_form_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Address"
-            android:id="@+id/register_form_address"/>
+            android:hint="Address" />
 
         <EditText
+            android:id="@+id/register_form_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            android:id="@+id/register_form_phone"/>
+            android:hint="Phone Number" />
 
         <EditText
+            android:id="@+id/register_form_site"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Site"
-            android:id="@+id/register_form_site"/>
+            android:hint="Site" />
 
         <RatingBar
+            android:id="@+id/register_form_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:max="10"
-            android:numStars="5"
-            android:id="@+id/register_form_rating"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:id="@+id/register_form_save"/>
+            android:numStars="5" />
     </LinearLayout>
 </ScrollView>
