@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 
 import com.example.play.yuri.agenda.model.Student;
 
@@ -37,13 +38,19 @@ public class StudentDAO extends SQLiteOpenHelper {
 
     public void save(Student student) {
         SQLiteDatabase db = getWritableDatabase();
+        ContentValues datas = getStudentContentValues(student);
+        db.insert("Students", null, datas);
+    }
+
+    @NonNull
+    private ContentValues getStudentContentValues(Student student) {
         ContentValues datas = new ContentValues();
         datas.put("name", student.getName());
         datas.put("address", student.getAddress());
         datas.put("phone", student.getPhone());
         datas.put("site", student.getSite());
         datas.put("rating", student.getRating());
-        db.insert("Students", null, datas);
+        return datas;
     }
 
     public List<Student> findAll() {
@@ -70,7 +77,14 @@ public class StudentDAO extends SQLiteOpenHelper {
 
     public void delete(Student student) {
         SQLiteDatabase db = getWritableDatabase();
-        String[] params = {String.valueOf(student.getId())};
+        String[] params = {student.getId().toString()};
         db.delete("Students", "id = ?", params);
+    }
+
+    public void update(Student student) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = getStudentContentValues(student);
+        String[] params = {student.getId().toString()};
+        db.update("Students", contentValues, "id = ?", params);
     }
 }

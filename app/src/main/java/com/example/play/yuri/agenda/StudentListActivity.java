@@ -36,6 +36,16 @@ public class StudentListActivity extends AppCompatActivity {
             }
         });
 
+        studentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Student student = (Student) studentList.getItemAtPosition(position);
+                Intent goToFormIntent = new Intent(StudentListActivity.this, RegisterFormActivity.class);
+                goToFormIntent.putExtra("student", student);
+                startActivity(goToFormIntent);
+            }
+        });
+
         registerForContextMenu(studentList);
     }
 

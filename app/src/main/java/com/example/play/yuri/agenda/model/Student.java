@@ -1,15 +1,17 @@
 package com.example.play.yuri.agenda.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Play on 20/11/2016.
  */
-public class Student {
-    private int id;
+public class Student implements Serializable {
+    private Integer id;
     private String name;
     private String address;
     private String phone;
     private String site;
-    private double rating;
+    private Double rating;
 
     public String getName() {
         return name;
@@ -43,19 +45,19 @@ public class Student {
         this.site = site;
     }
 
-    public double getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
