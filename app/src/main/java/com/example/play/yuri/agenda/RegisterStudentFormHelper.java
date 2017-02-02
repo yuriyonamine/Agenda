@@ -32,8 +32,8 @@ public class RegisterStudentFormHelper {
     public Student getStudent() {
         this.student.setName(nameField.getText().toString());
         this.student.setAddress(addressField.getText().toString());
-        this.student.setPhone(addressField.getText().toString());
-        this.student.setAddress(addressField.getText().toString());
+        this.student.setPhone(phoneField.getText().toString());
+        this.student.setSite(siteField.getText().toString());
         this.student.setRating(Double.valueOf(ratingField.getProgress()));
 
         return this.student;
