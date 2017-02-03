@@ -15,7 +15,7 @@ import java.util.List;
 public class StudentDAO extends SQLiteOpenHelper {
 
     public StudentDAO(Context context) {
-        super(context, "Agenda", null, 2);
+        super(context, "Agenda", null, 3);
     }
 
     @Override
@@ -25,15 +25,19 @@ public class StudentDAO extends SQLiteOpenHelper {
                 "address TEXT, " +
                 "phone TEXT, " +
                 "site TEXT, " +
+                "photo_path TEXT" +
                 "rating REAL);";
         db.execSQL(query);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String query = "DROP TABLE IF EXISTS Students";
-        db.execSQL(query);
-        onCreate(db);
+        String query = "";
+        switch (newVersion) {
+            case 3:
+                query = "ALTER TABLE Students ADD COLUMN photo_path TEXT";
+                db.execSQL(query);
+        }
     }
 
     public void save(Student student) {
@@ -49,7 +53,9 @@ public class StudentDAO extends SQLiteOpenHelper {
         datas.put("address", student.getAddress());
         datas.put("phone", student.getPhone());
         datas.put("site", student.getSite());
+        datas.put("photo_path", student.getPhotoPath());
         datas.put("rating", student.getRating());
+
         return datas;
     }
 
@@ -58,13 +64,14 @@ public class StudentDAO extends SQLiteOpenHelper {
         String query = "SELECT * FROM Students;";
         Cursor cursor = db.rawQuery(query, null);
         List<Student> students = new ArrayList<Student>();
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             Student student = new Student();
             student.setId(cursor.getInt(cursor.getColumnIndex("id")));
             student.setName(cursor.getString(cursor.getColumnIndex("name")));
             student.setAddress(cursor.getString(cursor.getColumnIndex("address")));
             student.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
             student.setSite(cursor.getString(cursor.getColumnIndex("site")));
+            student.setPhotoPath(cursor.getString(cursor.getColumnIndex("photo_path")));
             student.setRating(cursor.getDouble(cursor.getColumnIndex("rating")));
 
             students.add(student);

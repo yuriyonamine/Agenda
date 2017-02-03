@@ -24,6 +24,7 @@ import com.example.play.yuri.agenda.model.Student;
 import java.util.List;
 
 public class StudentListActivity extends AppCompatActivity {
+    private static final int CALL_PHONE_CODE = 100;
     private ListView studentList;
 
     @Override
@@ -80,7 +81,7 @@ public class StudentListActivity extends AppCompatActivity {
                 if (ActivityCompat.checkSelfPermission(StudentListActivity.this, Manifest.permission.CALL_PHONE)
                         != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(StudentListActivity.this,
-                            new String[]{Manifest.permission.CALL_PHONE}, 123);
+                            new String[]{Manifest.permission.CALL_PHONE}, CALL_PHONE_CODE);
                 } else {
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
                     callIntent.setData(Uri.parse("tel:" + student.getPhone()));

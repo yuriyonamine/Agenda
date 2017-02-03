@@ -12,6 +12,7 @@ public class Student implements Serializable {
     private String phone;
     private String site;
     private Double rating;
+    private String photoPath;
 
     public String getName() {
         return name;
@@ -59,6 +60,14 @@ public class Student implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 
     @Override
