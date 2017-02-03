@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -65,7 +66,7 @@ public class StudentListActivity extends AppCompatActivity {
         StudentDAO studentDAO = new StudentDAO(this);
         List<Student> students = studentDAO.findAll();
 
-        ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(this, android.R.layout.simple_list_item_1, students);
+        BaseAdapter adapter = new StudentListAdapter(this, students);
         studentList.setAdapter(adapter);
     }
 
