@@ -4,21 +4,24 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.play.yuri.agenda.http.SendDataTask;
+import com.example.play.yuri.agenda.http.WebClient;
+import com.example.play.yuri.agenda.converter.StudentConverter;
 import com.example.play.yuri.agenda.dao.StudentDAO;
 import com.example.play.yuri.agenda.model.Student;
 
@@ -26,8 +29,10 @@ import java.util.List;
 
 public class StudentListActivity extends AppCompatActivity {
     private static final int CALL_PHONE_CODE = 100;
+    private static final int SMS_CODE = 101;
     private ListView studentList;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +59,25 @@ public class StudentListActivity extends AppCompatActivity {
         });
 
         registerForContextMenu(studentList);
+
+        if (checkSelfPermission(Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.RECEIVE_SMS}, SMS_CODE);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.student_list_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.send_ratings) {
+            SendDataTask sendDataTask = new SendDataTask(this);
+            sendDataTask.execute();
+        }
+        return true;
     }
 
     @Override
