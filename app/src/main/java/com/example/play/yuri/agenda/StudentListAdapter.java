@@ -50,12 +50,22 @@ public class StudentListAdapter extends BaseAdapter {
         }
 
         TextView nameItem = (TextView) listView.findViewById(R.id.name_item);
-        TextView phoneItem = (TextView) listView.findViewById(R.id.phone_item);
-        ImageView photoItem = (ImageView) listView.findViewById(R.id.photo_item);
-
         nameItem.setText(student.getName());
+
+        TextView phoneItem = (TextView) listView.findViewById(R.id.phone_item);
         phoneItem.setText(student.getPhone());
 
+        TextView addressItem = (TextView) listView.findViewById(R.id.address_item);
+        if (addressItem != null) {
+            addressItem.setText(student.getAddress());
+        }
+
+        TextView siteItem = (TextView) listView.findViewById(R.id.site_item);
+        if (siteItem != null) {
+            siteItem.setText(student.getSite());
+        }
+
+        ImageView photoItem = (ImageView) listView.findViewById(R.id.photo_item);
         String photoPath = student.getPhotoPath();
         if (photoPath != null) {
             Bitmap bitmap = BitmapFactory.decodeFile(photoPath);
