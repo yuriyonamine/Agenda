@@ -4,11 +4,16 @@
     <item
         android:id="@+id/send_ratings"
         android:icon="@drawable/ic_enviar"
-        android:title="Send Ratings"
+        android:title="@string/send_ratings"
         app:showAsAction="always" />
     <item
         android:id="@+id/download_tests_menu"
-        android:title="Download the tests"
+        android:title="@string/download_the_tests"
         android:icon="@drawable/ic_receber"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/show_map_menu"
+        android:title="@string/show_in_maps"
+        android:icon="@drawable/ic_mapa"
         app:showAsAction="always"/>
 </menu>

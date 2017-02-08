@@ -80,7 +80,9 @@ public class StudentListActivity extends AppCompatActivity {
                 Intent goToTests = new Intent(this, TestsActivity.class);
                 startActivity(goToTests);
                 break;
-
+            case R.id.show_map_menu:
+                Intent goToMaps = new Intent(this, StudentMapsActivity.class);
+                startActivity(goToMaps);
         }
         return true;
     }

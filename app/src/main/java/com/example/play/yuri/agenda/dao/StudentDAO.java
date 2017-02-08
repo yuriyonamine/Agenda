@@ -18,6 +18,8 @@ public class StudentDAO extends SQLiteOpenHelper {
         super(context, "Agenda", null, 3);
     }
 
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE Students (id INTEGER PRIMARY KEY, " +

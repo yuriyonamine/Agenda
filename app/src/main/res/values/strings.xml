@@ -2,4 +2,8 @@
     <string name="app_name">Agenda</string>
     <string name="loading_title_dialog">Waiting...</string>
     <string name="loading_message_dialog">Processing the data</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="show_in_maps">Show in maps</string>
+    <string name="download_the_tests">Download the tests</string>
+    <string name="send_ratings">Send Ratings</string>
 </resources>
