@@ -20,8 +20,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.play.yuri.agenda.http.SendDataTask;
-import com.example.play.yuri.agenda.http.WebClient;
-import com.example.play.yuri.agenda.converter.StudentConverter;
 import com.example.play.yuri.agenda.dao.StudentDAO;
 import com.example.play.yuri.agenda.model.Student;
 
@@ -73,9 +71,16 @@ public class StudentListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.send_ratings) {
-            SendDataTask sendDataTask = new SendDataTask(this);
-            sendDataTask.execute();
+        switch (item.getItemId()) {
+            case R.id.send_ratings:
+                SendDataTask sendDataTask = new SendDataTask(this);
+                sendDataTask.execute();
+                break;
+            case R.id.download_tests_menu:
+                Intent goToTests = new Intent(this, TestsActivity.class);
+                startActivity(goToTests);
+                break;
+
         }
         return true;
     }

@@ -6,4 +6,9 @@
         android:icon="@drawable/ic_enviar"
         android:title="Send Ratings"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/download_tests_menu"
+        android:title="Download the tests"
+        android:icon="@drawable/ic_receber"
+        app:showAsAction="always"/>
 </menu>
