@@ -58,7 +58,7 @@ public class StudentListActivity extends AppCompatActivity {
 
         registerForContextMenu(studentList);
 
-        if (checkSelfPermission(Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.RECEIVE_SMS}, SMS_CODE);
         }
     }

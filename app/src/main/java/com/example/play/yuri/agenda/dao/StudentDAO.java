@@ -15,9 +15,8 @@ import java.util.List;
 public class StudentDAO extends SQLiteOpenHelper {
 
     public StudentDAO(Context context) {
-        super(context, "Agenda", null, 3);
+        super(context, "Agenda", null, 1);
     }
-
 
 
     @Override
@@ -27,19 +26,13 @@ public class StudentDAO extends SQLiteOpenHelper {
                 "address TEXT, " +
                 "phone TEXT, " +
                 "site TEXT, " +
-                "photo_path TEXT" +
-                "rating REAL);";
+                "rating REAL, " +
+                "photo_path TEXT);";
         db.execSQL(query);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String query = "";
-        switch (newVersion) {
-            case 3:
-                query = "ALTER TABLE Students ADD COLUMN photo_path TEXT";
-                db.execSQL(query);
-        }
     }
 
     public void save(Student student) {
@@ -55,8 +48,8 @@ public class StudentDAO extends SQLiteOpenHelper {
         datas.put("address", student.getAddress());
         datas.put("phone", student.getPhone());
         datas.put("site", student.getSite());
-        datas.put("photo_path", student.getPhotoPath());
         datas.put("rating", student.getRating());
+        datas.put("photo_path", student.getPhotoPath());
 
         return datas;
     }
@@ -97,7 +90,7 @@ public class StudentDAO extends SQLiteOpenHelper {
         db.update("Students", contentValues, "id = ?", params);
     }
 
-    public boolean isStudent(String phone){
+    public boolean isStudent(String phone) {
         String sql = "select * from Students where phone = ?";
         Cursor cursor = getReadableDatabase().rawQuery(sql, new String[]{phone});
         int quantity = cursor.getColumnCount();

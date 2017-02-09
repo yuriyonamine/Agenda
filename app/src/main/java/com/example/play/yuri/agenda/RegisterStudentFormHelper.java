@@ -58,10 +58,12 @@ public class RegisterStudentFormHelper {
 
     public void loadPhoto(String photoPath) {
         Bitmap image = BitmapFactory.decodeFile(photoPath);
-        image = Bitmap.createScaledBitmap(image, 100, 100, true);
-        this.photoPathField.setImageBitmap(image);
-        this.photoPathField.setScaleType(ImageView.ScaleType.FIT_XY);
-        this.photoPathField.setTag(photoPath);
+        if(image!=null) {
+            image = Bitmap.createScaledBitmap(image, 100, 100, true);
+            this.photoPathField.setImageBitmap(image);
+            this.photoPathField.setScaleType(ImageView.ScaleType.FIT_XY);
+            this.photoPathField.setTag(photoPath);
+        }
     }
 
 }
